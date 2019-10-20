@@ -3,6 +3,7 @@ package me.sheimi.sgit.dialogs;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import me.sheimi.sgit.SGitApplication;
 import me.sheimi.sgit.database.models.Repo;
 import me.sheimi.sgit.preference.PreferenceHelper;
 import me.sheimi.sgit.repo.tasks.repo.InitLocalTask;
+import timber.log.Timber;
 
 /**
  * Created by sheimi on 8/24/13.
@@ -93,6 +95,7 @@ public class InitDialog extends SheimiDialogFragment implements
         }
 
         localPath = mLocalPath.getText().toString().trim();
+        showToastMessage("Creating new repo");
         mRepo = Repo.createRepo(localPath, "local repository", getString(R.string.initialising));
 
         InitLocalTask task = new InitLocalTask(mRepo);

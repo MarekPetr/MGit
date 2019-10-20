@@ -31,5 +31,6 @@ public class MGitDebugApplication extends SGitApplication {
             Timber.plant(new Timber.DebugTree());
         }
         Timber.i("Initialised Stetho");
+        Timber.d("Create");
     }
 }

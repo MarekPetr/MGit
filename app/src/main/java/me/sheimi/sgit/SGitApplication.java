@@ -3,6 +3,7 @@ package me.sheimi.sgit;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.manichord.mgit.transport.MGitHttpConnectionFactory;
 
@@ -11,9 +12,14 @@ import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
 import org.eclipse.jgit.transport.CredentialsProvider;
 
+import java.io.File;
+
 import me.sheimi.android.utils.SecurePrefsException;
 import me.sheimi.android.utils.SecurePrefsHelper;
+import me.sheimi.android.views.SheimiDialogFragment;
+import me.sheimi.sgit.database.models.Repo;
 import me.sheimi.sgit.preference.PreferenceHelper;
+import me.sheimi.sgit.repo.tasks.repo.InitLocalTask;
 import timber.log.Timber;
 
 /**
@@ -49,6 +55,14 @@ public class SGitApplication extends Application {
         } catch (SecurePrefsException e) {
             Timber.e(e);
         }
+
+/*      Repo repo = Repo.create("repo", "local repository", "");
+        InitLocalTask task = new InitLocalTask(repo);
+        task.executeTask();*/
+
+        /*Repo mRepo = Repo.createRepo("git", "local repository", "");
+        InitLocalTask task = new InitLocalTask(mRepo);
+        task.executeTask();*/
     }
 
 

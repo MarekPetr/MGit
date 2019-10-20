@@ -45,6 +45,7 @@ import me.sheimi.sgit.repo.tasks.repo.CloneTask;
 import me.sheimi.sgit.ssh.PrivateKeyUtils;
 import timber.log.Timber;
 
+import me.sheimi.sgit.repo.tasks.repo.InitLocalTask;
 public class RepoListActivity extends SheimiFragmentActivity {
 
     private Context mContext;
@@ -62,6 +63,7 @@ public class RepoListActivity extends SheimiFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Timber.d("Tady je RepoListActivity");
         checkAndRequestRequiredPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         RepoListViewModel viewModel = ViewModelProviders.of(this).get(RepoListViewModel.class);
@@ -81,6 +83,11 @@ public class RepoListActivity extends SheimiFragmentActivity {
                 }
             }
         });
+
+        //TODO INIT NEW REPO HERE
+        Repo repo = Repo.createRepo("nove", "local repository", "");
+        InitLocalTask initTask = new InitLocalTask(repo);
+        initTask.executeTask();
 
         PrivateKeyUtils.migratePrivateKeys();
 

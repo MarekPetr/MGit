@@ -8,6 +8,7 @@ import me.sheimi.sgit.exception.StopTaskException;
 
 import org.eclipse.jgit.api.LogCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.NoHeadException;
 import org.eclipse.jgit.revwalk.RevCommit;
 
 public class GetCommitTask extends RepoOpTask {
@@ -52,6 +53,7 @@ public class GetCommitTask extends RepoOpTask {
             for (RevCommit commit : commits) {
                 mResult.add(commit);
             }
+
         } catch (GitAPIException e) {
             setException(e);
             return false;
